@@ -25,13 +25,13 @@
    - [X]  Agregar funcionalidad para editar el estado del procedimiento.
 5. **API de Procedimientos:**
 
-   - [ ]  Crear un endpoint que devuelva todos los registros de procedimientos.
+   - [X]  Crear un endpoint que devuelva todos los registros de procedimientos.
 
 ## Extras (Opcional):
 
 1. **Filtros en el Endpoint de la API:**
 
-   - [ ]  Añadir filtros para buscar procedimientos por estado o tipo.
+   - [X]  Añadir filtros para buscar procedimientos por estado o tipo.
 2. **Vista Detallada de Procedimientos:**
 
    - [ ]  Crear una vista detallada de cada procedimiento con un diseño atractivo.
