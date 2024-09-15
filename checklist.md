@@ -5,19 +5,19 @@
 1. **Configurar la base de datos:**
 
    - [X]  Configurar la base de datos SQLite en el archivo `.env`.
-   - [ ]  Configurar las migraciones iniciales para el modelo de procedimientos.
+   - [X]  Configurar las migraciones iniciales para el modelo de procedimientos.
 2. **Modelo y Migraciones de "Procedimientos":**
 
-   - [ ]  Crear el modelo `Procedure` con estos atributos:
+   - [X]  Crear el modelo `Procedure` con estos atributos:
      - Tipo de procedimiento (decidir si es un entero, cadena o relación con otra tabla).
      - Estado del procedimiento (enum: "pending", "in progress", "done").
      - DNI de la persona atendida.
      - Timestamps (`created_at`, `updated_at`).
-   - [ ]  Crear la migración para la tabla de procedimientos.
+   - [X]  Crear la migración para la tabla de procedimientos.
 3. **Controlador y Rutas:**
 
-   - [ ]  Crear un controlador para gestionar los procedimientos.
-   - [ ]  Definir rutas para crear, actualizar y listar procedimientos.
+   - [X]  Crear un controlador para gestionar los procedimientos.
+   - [X]  Definir rutas para crear, actualizar y listar procedimientos.
 4. **Vista para Listar Procedimientos:**
 
    - [ ]  Implementar una vista en el Dashboard que muestre la lista de todos los procedimientos.
