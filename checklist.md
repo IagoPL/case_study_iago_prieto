@@ -20,9 +20,9 @@
    - [X]  Definir rutas para crear, actualizar y listar procedimientos.
 4. **Vista para Listar Procedimientos:**
 
-   - [ ]  Implementar una vista en el Dashboard que muestre la lista de todos los procedimientos.
-   - [ ]  Asegurar que la vista permita crear nuevos procedimientos.
-   - [ ]  Agregar funcionalidad para editar el estado del procedimiento.
+   - [X]  Implementar una vista en el Dashboard que muestre la lista de todos los procedimientos.
+   - [X]  Asegurar que la vista permita crear nuevos procedimientos.
+   - [X]  Agregar funcionalidad para editar el estado del procedimiento.
 5. **API de Procedimientos:**
 
    - [ ]  Crear un endpoint que devuelva todos los registros de procedimientos.

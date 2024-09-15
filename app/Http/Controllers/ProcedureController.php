@@ -25,7 +25,7 @@ class ProcedureController extends Controller
      */
     public function create()
     {
-
+        return view('procedures.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class ProcedureController extends Controller
 
         // Redirigir a la lista de procedimientos con un mensaje de éxito
         return redirect()->route('procedures.index')
-                         ->with('success', 'Procedure created successfully.');
+            ->with('success', 'Procedure created successfully.');
     }
 
     /**
@@ -61,7 +61,11 @@ class ProcedureController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Buscar el procedimiento por ID
+        $procedure = Procedure::findOrFail($id);
+
+        // Devolver la vista de edición con los datos del procedimiento
+        return view('procedures.edit', compact('procedure'));
     }
 
     /**
@@ -69,7 +73,19 @@ class ProcedureController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validar el nuevo estado
+        $request->validate([
+            'status' => 'required|in:pending,in progress,done',
+        ]);
+
+        // Buscar el procedimiento y actualizar su estado
+        $procedure = Procedure::findOrFail($id);
+        $procedure->status = $request->input('status');
+        $procedure->save();
+
+        // Redirigir a la lista de procedimientos con un mensaje de éxito
+        return redirect()->route('procedures.index')
+            ->with('success', 'Estado del procedimiento actualizado correctamente.');
     }
 
     /**
