@@ -34,10 +34,10 @@
    - [X]  Añadir filtros para buscar procedimientos por estado o tipo.
 2. **Vista Detallada de Procedimientos:**
 
-   - [ ]  Crear una vista detallada de cada procedimiento con un diseño atractivo.
+   - [X]  Crear una vista detallada de cada procedimiento con un diseño atractivo.
 3. **Modificación de Tipo de Procedimiento y DNI:**
 
-   - [ ]  Implementar la capacidad de modificar el tipo de procedimiento y el DNI en la vista de edición.
+   - [X]  Implementar la capacidad de modificar el tipo de procedimiento y el DNI en la vista de edición.
 4. **Mejoras en el Diseño del Listado:**
 
-   - [ ]  Aplicar un diseño similar al panel de eAgora, según las instrucciones del caso de estudio.
+   - [X]  Aplicar un diseño similar al panel de eAgora, según las instrucciones del caso de estudio.

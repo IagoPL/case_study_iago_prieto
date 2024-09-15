@@ -48,7 +48,11 @@ class ProcedureController extends Controller
 
     public function show(string $id)
     {
-        //
+        // Buscar el procedimiento por ID
+        $procedure = Procedure::findOrFail($id);
+
+        // Retornar la vista detallada con los datos del procedimiento
+        return view('procedures.show', compact('procedure'));
     }
 
     public function edit(string $id)

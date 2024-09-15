@@ -9,3 +9,4 @@ Route::get('/', function () {
 
 Route::resource('procedures', ProcedureController::class);
 Route::get('/procedures/{id}/duplicate', [ProcedureController::class, 'duplicate'])->name('procedures.duplicate');
+Route::get('/procedures/{id}', [ProcedureController::class, 'show'])->name('procedures.show');
