@@ -1,1 +1,3 @@
-comienzo -> 18:30
+Comienzo -> 18:30
+Pausa par la cena -> 20:35
+Continuación -> 22:10

@@ -8,9 +8,13 @@ use Illuminate\Http\Request;
 
 class ProcedureController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    public function getProcedures()
+    {
+        $procedures = Procedure::all();
+        return response()->json($procedures);
+    }
+
     public function index()
     {
         // Recuperar todos los procedimientos de la base de datos
@@ -20,17 +24,11 @@ class ProcedureController extends Controller
         return view('procedures.index', compact('procedures'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('procedures.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         // Validar los datos enviados en la solicitud.
@@ -48,17 +46,11 @@ class ProcedureController extends Controller
             ->with('success', 'Procedure created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         // Buscar el procedimiento por ID
@@ -68,31 +60,57 @@ class ProcedureController extends Controller
         return view('procedures.edit', compact('procedure'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        // Validar el nuevo estado
+        // Validar los datos del formulario, incluyendo el formato del DNI
         $request->validate([
+            'type' => 'required|string',
+            'dni' => ['required', 'regex:/^[0-9]{8}[A-Za-z]$/'], // Validación del DNI
             'status' => 'required|in:pending,in progress,done',
         ]);
 
-        // Buscar el procedimiento y actualizar su estado
+        // Encontrar el procedimiento y actualizar los campos
         $procedure = Procedure::findOrFail($id);
-        $procedure->status = $request->input('status');
-        $procedure->save();
+        $procedure->update([
+            'type' => $request->input('type'),
+            'dni' => $request->input('dni'),
+            'status' => $request->input('status'),
+        ]);
 
-        // Redirigir a la lista de procedimientos con un mensaje de éxito
-        return redirect()->route('procedures.index')
-            ->with('success', 'Estado del procedimiento actualizado correctamente.');
+        // Mensaje de éxito
+        session()->flash('success', 'El procedimiento ha sido actualizado con éxito.');
+
+        return redirect()->route('procedures.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+
+    public function destroy($id)
     {
-        //
+        $procedure = Procedure::findOrFail($id);
+        $procedure->delete();
+
+        // Almacenar mensaje flash en la sesión
+        session()->flash('success', 'El procedimiento ha sido eliminado con éxito.');
+
+        // Redirigir de vuelta al índice de procedimientos
+        return redirect()->route('procedures.index');
+    }
+
+
+    public function duplicate($id)
+    {
+        // Obtener el procedimiento original
+        $procedure = Procedure::findOrFail($id);
+
+        // Crear una copia del procedimiento
+        $newProcedure = $procedure->replicate();
+        $newProcedure->created_at = now(); // Ajustar fecha de creación
+        $newProcedure->save();
+
+        // Almacenar mensaje flash en la sesión
+        session()->flash('success', 'El procedimiento ha sido duplicado con éxito.');
+
+        // Redirigir de vuelta al índice de procedimientos
+        return redirect()->route('procedures.index');
     }
 }
